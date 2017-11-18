@@ -2,41 +2,33 @@ from functools import reduce
 from person import Person
 
 def total_letters(arr):
-  letters_num = []
-
-  for elem in arr:
-    letters_num.append(len(elem))
-
-  sum = 0
-  for elem in letters_num:
-    sum += elem
-
-  return sum
+  return reduce(
+    lambda sum, elem: sum + elem,
+    list(map(len, arr)),
+    0
+  )
 
 def total_letters_x(arr, letter):
-  names_with_letter = []
-
-  for elem in arr:
-    if letter in elem:
-      names_with_letter.append(elem)
-
-  letters_num = []
-  for elem in names_with_letter:
-    letters_num.append(len(elem))
-
-  sum = 0
-  for elem in letters_num:
-    sum += elem
-
-  return sum
+  return reduce(
+    lambda sum, elem: sum + elem,
+    list(
+      map(
+        len,
+        filter(lambda elem: letter in elem, arr)
+      )
+    )
+  )
 
 def transform_objs_to_dic(arr, attributes):
-  result = []
+  def assign(hash, attribute, obj):
+    hash[attribute] = getattr(obj, attribute)
+    return hash
 
-  for elem in arr:
-    temp = {}
-    for attr in attributes:
-      temp[attr] = getattr(elem, attr)
-    result.append(temp)
+  def transform_to_dic(obj, attributes):
+    return reduce(
+      lambda hash, attribute: assign(hash, attribute, obj),
+      attributes,
+      {}
+    )
 
-  return result
+  return list(map(lambda elem: transform_to_dic(elem, attributes), arr))

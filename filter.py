@@ -1,22 +1,9 @@
 
 def filter_odds(arr):
-  response = []
-  for elem in arr:
-    if elem % 2 == 0:
-      response.append(elem)
-  return response
+  return list(filter(lambda elem: elem % 2 == 0, arr))
 
 def filter_dic_with(attr, arr):
-  response = []
-  for elem in arr:
-    if attr in elem:
-      response.append(elem)
-
-  return response
+  return list(filter(lambda elem: attr in elem, arr))
 
 def filter_array_with_more_than(num, arr):
-  response = []
-  for elem in arr:
-    if len(elem) > num:
-      response.append(elem)
-  return response
+  return list(filter(lambda elem: len(elem) > num, arr))
