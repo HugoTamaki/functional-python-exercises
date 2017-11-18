@@ -1,5 +1,4 @@
 from functools import reduce
-import operator
 
 def sum_of_integers(arr):
   sum = 0

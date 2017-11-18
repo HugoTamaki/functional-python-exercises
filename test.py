@@ -2,6 +2,7 @@ import unittest
 from map import *
 from filter import *
 from reduce import *
+from combination import *
 from animal import Animal
 
 class TestFunctionalPython(unittest.TestCase):
@@ -117,5 +118,50 @@ class TestFunctionalPython(unittest.TestCase):
         'type': 'Rabbit'
       }
     )
+
+  def test_total_letters_from_string_array(self):
+    self.assertEqual(total_letters(['Bob', 'John', 'William', 'Mack']), 18)
+
+  def test_total_letters_from_string_array_that_contains_x(self):
+    self.assertEqual(total_letters_x(['Bob', 'John', 'William', 'Mack'], 'a'), 11)
+
+  def test_transform_array_of_objects_to_array_of_dic(self):
+    objects = [
+      Person('Bob', 20, 'male', 'Street test', 'Neighborhood test'),
+      Person('John', 20, 'male', 'Street test', 'Neighborhood test'),
+      Person('Maria', 20, 'female', 'Street test', 'Neighborhood test'),
+      Person('Marta', 20, 'female', 'Street test', 'Neighborhood test'),
+      Person('William', 20, 'male', 'Street test', 'Neighborhood test')
+    ]
+
+    response = [
+      {
+        'name': 'Bob',
+        'age': 20,
+        'gender': 'male'
+      },
+      {
+        'name': 'John',
+        'age': 20,
+        'gender': 'male'
+      },
+      {
+        'name': 'Maria',
+        'age': 20,
+        'gender': 'female'
+      },
+      {
+        'name': 'Marta',
+        'age': 20,
+        'gender': 'female'
+      },
+      {
+        'name': 'William',
+        'age': 20,
+        'gender': 'male'
+      },
+    ]
+
+    self.assertEqual(transform_objs_to_dic(objects, ['name', 'age', 'gender']), response)
 
 unittest.main()
