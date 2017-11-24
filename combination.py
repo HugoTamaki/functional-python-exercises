@@ -1,6 +1,16 @@
 from functools import reduce
 from person import Person
 
+def average_height(people):
+  heights = list(map(lambda x: x['height'],
+              filter(lambda x: 'height' in x, people)))
+
+  if len(heights) > 0:
+    average_height = reduce(lambda acc, x: acc + x, heights, 0) / len(heights)
+    return average_height
+
+  return 0
+
 def total_letters(arr):
   return reduce(
     lambda sum, elem: sum + elem,

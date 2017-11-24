@@ -119,6 +119,13 @@ class TestFunctionalPython(unittest.TestCase):
       }
     )
 
+  def test_average_height(self):
+    people = [{'name': 'Mary', 'height': 160},
+          {'name': 'Isla', 'height': 80},
+          {'name': 'Sam'}]
+
+    self.assertEqual(average_height(people), 120)
+
   def test_total_letters_from_string_array(self):
     self.assertEqual(total_letters(['Bob', 'John', 'William', 'Mack']), 18)
 
