@@ -1,4 +1,5 @@
 import unittest
+from exercise1 import *
 from map import *
 from filter import *
 from reduce import *
@@ -6,6 +7,12 @@ from combination import *
 from animal import Animal
 
 class TestFunctionalPython(unittest.TestCase):
+
+  def test_callback_success(self):
+    self.assertEqual(callback(200, None, None), "Success!")
+
+  def test_callback_failure(self):
+    self.assertEqual(callback(401, None, None), "Failure!")
 
   def test_len_map(self):
     self.assertEqual(len_map(['Bob', 'John', 'William']), [3, 4, 7])
